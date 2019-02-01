@@ -8,6 +8,7 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class AppComponent {
   title = 'app';
+  newRunner = false;
   signed_in = false;
   login: any = {};
   error: string;
@@ -21,6 +22,11 @@ export class AppComponent {
   		signInRedirect: "/"
   		});
   }
+
+  ShowNewRunner()
+  {
+this.newRunner = true;
+}
 
   runnerSignIn()
   {

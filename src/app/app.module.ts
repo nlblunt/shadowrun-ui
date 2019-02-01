@@ -14,6 +14,7 @@ import { Angular2TokenService } from 'angular2-token'
 //MATERIAL
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -32,6 +33,7 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatInputModule,
+    MatButtonModule,
     MatSelectModule,
     MatFormFieldModule,
     MatCardModule

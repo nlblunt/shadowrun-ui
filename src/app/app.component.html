@@ -1,34 +1,40 @@
 <div *ngIf='!newRunner' fxLayout='column' fxLayoutAlign='center center'>
-  <h1>Welcome Chummers</h1>
+  <h2>Welcome Chummers</h2>
+	
+	<p *ngIf=“error != ‘’”>{{error}}</p>
 
   <form>
     <mat-form-field>
-      <label>Username:</label>
       <input matInput type="text" [(ngModel)]="login.email" placeholder="Email">
     </mat-form-field>
 
     <mat-form-field>
-      <label>Password:</label>
       <input matInput type="password" [(ngModel)]="login.password" placeholder="Password, Chummer">
     </mat-form-field>
 
-    <button mat-raised-button class="width-100" color="accent" (click)="runnerSignIn()">Enter</button>
-    <a mat-flat-button color="accent" (click)="ShowNewRunner()">New Runner</a>
+    <button mat-raised-button class="width-100" color="primary" (click)="runnerSignIn()">Enter</button>
+    <a mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(true)">New Runner</a>
   </form>
 </div>
 
 <div *ngIf='newRunner' fxLayout='column' fxLayoutAlign='center center'>
-  <h1>Oh, so ya be new around here huh? Well, give me your info so I can register you</h1>
+  <h2>Oh, so ya be new around here huh? Well, give me your info so I can register you</h2>
 
   <form>
     <mat-form-field>
-      <label>Email:</label>
 		<input matInput type='text' [(ngModel)]='login.email' placeholder='Email'>
 	</mat-form-field>
 
 	<mat-form-field>
-		<label>Password:</label>
       <input matInput type='password' [(ngModel)]='login.password' placeholder='Password, Chummer'>
     </mat-form-field>
+
+	<mat-form-field>
+		<input matInput type=‘password [(ngModel)]=‘login.password_confirm’ placeholder=‘Tell me the password again, Chummer’>
+	</mat-form-field>
+
+	<button mat-raised-button class=“width-100” color=“primary”>Save</button>
+
+	<button mat-raised-button class=“width-100” color=“accent” (click)=“ShowNewRunner(false)”>Cancel</button>
   </form>
 </div>

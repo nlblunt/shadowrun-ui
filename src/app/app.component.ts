@@ -8,8 +8,8 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class AppComponent {
   title = 'app';
-  newRunner = false;
-  signed_in = false;
+  newRunner = false;  //Creating a new runner (user)?
+  signed_in = false;  //Is the user already signed in?
   login: any = {};
   error: string;
 
@@ -18,14 +18,14 @@ export class AppComponent {
   constructor(private _tokenService: Angular2TokenService)
   {
   	this._tokenService.init({
-  		apiBase: "http://localhost:4000",
+  		apiBase: "http://shadowrun-api.herokuapp.com",
   		signInRedirect: "/"
   		});
   }
 
-  ShowNewRunner()
+  ShowNewRunner(show: boolean)
   {
-this.newRunner = true;
+this.newRunner = show;
 }
 
   runnerSignIn()
@@ -40,7 +40,13 @@ this.newRunner = true;
 
   runnerRegister()
   {
-      {
+	if(this.login.password != this.login.password_confirm)
+	{
+		this.error = “Passwords do not match”;
+		return;
+	}
+
+    
     this._tokenService.registerAccount({
       email: this.login.email,
       password: this.login.password,

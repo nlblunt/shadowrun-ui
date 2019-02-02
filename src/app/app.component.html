@@ -34,7 +34,7 @@
 		<input matInput type='password' [(ngModel)]='login.password_confirm' placeholder='Tell me the password again, Chummer' name="password_confim">
 	</mat-form-field>
 
-	<button mat-raised-button class="width-100" color="primary">Save</button>
+	<button mat-raised-button class="width-100" color="primary" (click)="runnerRegister()">Save</button>
 	<br>
 	<button mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(false)">Cancel</button>
   </form>

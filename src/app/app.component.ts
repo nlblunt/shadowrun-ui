@@ -58,5 +58,4 @@ this.newRunner = show;
       error => this.error = "Error registering new account."
     )
   }
-  }
 }

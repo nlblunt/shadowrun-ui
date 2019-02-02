@@ -1,4 +1,4 @@
-<div fxLayout='column' fxLayoutAlign='center center'>
+<div *ngIf='!newRunner' fxLayout='column' fxLayoutAlign='center center'>
   <h1>Welcome Chummers</h1>
 
   <form>
@@ -22,7 +22,7 @@
 
   <form>
     <mat-form-field>
-      <label>Email:<label>
+      <label>Email:</label>
 		<input matInput type='text' [(ngModel)]='login.email' placeholder='Email'>
 	</mat-form-field>
 

@@ -42,7 +42,7 @@ this.newRunner = show;
   {
 	if(this.login.password != this.login.password_confirm)
 	{
-		this.error = “Passwords do not match”;
+		this.error = "Passwords do not match";
 		return;
 	}
 

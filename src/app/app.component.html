@@ -5,15 +5,16 @@
 
   <form>
     <mat-form-field>
-      <input matInput type="text" [(ngModel)]="login.email" placeholder="Email">
+      <input matInput type="text" [(ngModel)]="login.email" placeholder="Email" name="email">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="password" [(ngModel)]="login.password" placeholder="Password, Chummer">
+      <input matInput type="password" [(ngModel)]="login.password" placeholder="Password, Chummer" name="password">
     </mat-form-field>
 
     <button mat-raised-button class="width-100" color="primary" (click)="runnerSignIn()">Enter</button>
-    <a mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(true)">New Runner</a>
+    <br>
+	<a mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(true)">New Runner</a>
   </form>
 </div>
 
@@ -22,19 +23,19 @@
 
   <form>
     <mat-form-field>
-		<input matInput type='text' [(ngModel)]='login.email' placeholder='Email'>
+		<input matInput type='text' [(ngModel)]='login.email' placeholder='Email' name="email">
 	</mat-form-field>
 
 	<mat-form-field>
-      <input matInput type='password' [(ngModel)]='login.password' placeholder='Password, Chummer'>
+      <input matInput type='password' [(ngModel)]='login.password' placeholder='Password, Chummer' name="password">
     </mat-form-field>
 
 	<mat-form-field>
-		<input matInput type='password' [(ngModel)]='login.password_confirm' placeholder='Tell me the password again, Chummer'>
+		<input matInput type='password' [(ngModel)]='login.password_confirm' placeholder='Tell me the password again, Chummer' name="password_confim">
 	</mat-form-field>
 
 	<button mat-raised-button class="width-100" color="primary">Save</button>
-
+	<br>
 	<button mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(false)">Cancel</button>
   </form>
 </div>

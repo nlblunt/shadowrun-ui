@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
 
     //Initialize Angular2TokenService
   
-  constructor(private _tokenService: Angular2TokenService)
+  constructor(private _tokenService: Angular2TokenService, private router: Router)
   {
   	this._tokenService.init({
   		apiBase: "http://shadowrun-api.herokuapp.com",
@@ -54,7 +55,11 @@ this.newRunner = show;
     })
     .subscribe
     (
-      res => this.signed_in = true,
+      res => 
+		{
+			this.signed_in = true;
+this.router.navigateByUrl("/runner");
+},
       error => this.error = "Error registering new account."
     )
   }

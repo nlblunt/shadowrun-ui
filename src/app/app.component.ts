@@ -51,7 +51,7 @@ this.newRunner = show;
     this._tokenService.registerAccount({
       email: this.login.email,
       password: this.login.password,
-      passwordConfirmation: this.login.password
+      password_confirmation: this.login.password
     })
     .subscribe
     (

@@ -34,8 +34,12 @@ this.newRunner = show;
     //Sign in
         this._tokenService.signIn({email: this.login.email, password: this.login.password}).subscribe
         (
-          res => this.signed_in = true,
-          error => this.error = "Error Logging in.  Please try again."
+          res => 
+{
+this.signed_in = true;
+this.router.navigateByUrl("/runner");
+}
+          error => this.error = error
         )
   }
 
@@ -51,7 +55,7 @@ this.newRunner = show;
     this._tokenService.registerAccount({
       email: this.login.email,
       password: this.login.password,
-      password_confirmation: this.login.password
+      passwordConfirmation: this.login.password
     })
     .subscribe
     (

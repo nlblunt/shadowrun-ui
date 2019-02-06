@@ -1,41 +1,105 @@
-<div *ngIf='!newRunner' fxLayout='column' fxLayoutAlign='center center'>
-  <h2>Welcome Chummers</h2>
-	
-	<p *ngIf="error != ''">{{error}}</p>
+<div *ngIf="!signed_in">
+  <div *ngIf="!newRunner" fxLayout="column" fxLayoutAlign="center center">
+    <h2>Welcome Chummers</h2>
 
-  <form>
-    <mat-form-field>
-      <input matInput type="text" [(ngModel)]="login.email" placeholder="Email" name="email">
-    </mat-form-field>
+    <p *ngIf="error != ''">{{ error }}</p>
 
-    <mat-form-field>
-      <input matInput type="password" [(ngModel)]="login.password" placeholder="Password, Chummer" name="password">
-    </mat-form-field>
+    <form>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="login.email"
+          placeholder="Email"
+          name="email"
+        />
+      </mat-form-field>
 
-    <button mat-raised-button class="width-100" color="primary" (click)="runnerSignIn()">Enter</button>
-    <br>
-	<a mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(true)">New Runner</a>
-  </form>
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          [(ngModel)]="login.password"
+          placeholder="Password, Chummer"
+          name="password"
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        class="width-100"
+        color="primary"
+        (click)="runnerSignIn()"
+      >
+        Enter
+      </button>
+      <br />
+      <a
+        mat-raised-button
+        class="width-100"
+        color="accent"
+        (click)="ShowNewRunner(true)"
+        >New Runner</a
+      >
+    </form>
+  </div>
+
+  <div *ngIf="newRunner" fxLayout="column" fxLayoutAlign="center center">
+    <h2>
+      Oh, so ya be new around here huh? Well, give me your info so I can
+      register you
+    </h2>
+
+    <form>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="login.email"
+          placeholder="Email"
+          name="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          [(ngModel)]="login.password"
+          placeholder="Password, Chummer"
+          name="password"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          [(ngModel)]="login.password_confirm"
+          placeholder="Tell me the password again, Chummer"
+          name="password_confim"
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        class="width-100"
+        color="primary"
+        (click)="runnerRegister()"
+      >
+        Save
+      </button>
+      <br />
+      <button
+        mat-raised-button
+        class="width-100"
+        color="accent"
+        (click)="ShowNewRunner(false)"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
 </div>
 
-<div *ngIf='newRunner' fxLayout='column' fxLayoutAlign='center center'>
-  <h2>Oh, so ya be new around here huh? Well, give me your info so I can register you</h2>
-
-  <form>
-    <mat-form-field>
-		<input matInput type='text' [(ngModel)]='login.email' placeholder='Email' name="email">
-	</mat-form-field>
-
-	<mat-form-field>
-      <input matInput type='password' [(ngModel)]='login.password' placeholder='Password, Chummer' name="password">
-    </mat-form-field>
-
-	<mat-form-field>
-		<input matInput type='password' [(ngModel)]='login.password_confirm' placeholder='Tell me the password again, Chummer' name="password_confim">
-	</mat-form-field>
-
-	<button mat-raised-button class="width-100" color="primary" (click)="runnerRegister()">Save</button>
-	<br>
-	<button mat-raised-button class="width-100" color="accent" (click)="ShowNewRunner(false)">Cancel</button>
-  </form>
-</div>
+<router-outlet></router-outlet>

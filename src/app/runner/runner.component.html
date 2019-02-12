@@ -1,3 +1,18 @@
 <p>
   runner works!
 </p>
+
+<button mat-flat-button>New Runner</button>
+
+<div *ngIf="creatingNewRunner" fxLayout="column" fxAlign="center">
+Create a new runner here
+<form>
+<mat-form-field>
+<input matInput type="text" name="name" [(ngModel)]="newRunner.name" placeholder="Runner Name">
+</mat-form-field>
+
+<mat-form-field>
+<input matInput type="number" name="body" [(ngModel)]="newRunner.body" placeholder="Body">
+</mat-form-field>
+</form>
+</div>

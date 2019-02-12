@@ -1,18 +1,56 @@
-<p>
-  runner works!
-</p>
+<div id="header" fxLayout="row" fxLayoutAlign="end start">
+  <button
+    mat-button-flat
+    color="warning"
+    *ngIf="appService.userSignedIn"
+    (click)="Logout()"
+  >
+    Logout
+  </button>
+</div>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h1>{{ userData.email }}</h1>
+  <button mat-flat-button (click)="SetNewRunner('true')">New Runner</button>
+</div>
 
-<button mat-flat-button>New Runner</button>
+<div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">
+  <p>Create a new runner here</p>
+  <form style="width: 400px">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="name"
+        [(ngModel)]="newRunner.name"
+        placeholder="Runner Name"
+      />
+    </mat-form-field>
 
-<div *ngIf="creatingNewRunner" fxLayout="column" fxAlign="center">
-Create a new runner here
-<form>
-<mat-form-field>
-<input matInput type="text" name="name" [(ngModel)]="newRunner.name" placeholder="Runner Name">
-</mat-form-field>
-
-<mat-form-field>
-<input matInput type="number" name="body" [(ngModel)]="newRunner.body" placeholder="Body">
-</mat-form-field>
-</form>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="body"
+              [(ngModel)]="newRunner.body"
+              placeholder="Body"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="agility"
+              [(ngModel)]="newRunner.agility"
+              placeholder="Agility"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
 </div>

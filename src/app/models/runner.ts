@@ -1,7 +1,7 @@
 export class Runner {
   id: number;
   name: string;
-  metatype:_id: number;
+  metatype_id: number;
   metatype: string;
   agility: number;
   charisma: number;

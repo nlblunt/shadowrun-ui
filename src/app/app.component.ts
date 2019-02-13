@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _tokenService: Angular2TokenService,
-    private appService: AppService,
+    public appService: AppService,
     private router: Router
   ) {}
 

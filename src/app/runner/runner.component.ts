@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "../app.service";
-import ( Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 //MODELS
 import { Runner } from "../models/runner";

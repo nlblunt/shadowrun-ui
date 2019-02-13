@@ -10,7 +10,7 @@
 </div>
 <div fxLayout="column" fxLayoutAlign="center center">
   <h1>{{ userData.email }}</h1>
-  <button mat-flat-button (click)="SetNewRunner('true')">New Runner</button>
+  <button mat-flat-button (click)="SetNewRunner(true)">New Runner</button>
 </div>
 
 <div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">

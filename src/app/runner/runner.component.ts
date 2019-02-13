@@ -17,7 +17,7 @@ export class RunnerComponent implements OnInit {
   newRunner: any = {};  //Holds runner data
   allMetatypes: any = {};  //Holds all the Metatypes
 
-  constructor(private appService: AppService, private router: Router) {}
+  constructor(public appService: AppService, private router: Router) {}
 
   ngOnInit() {
     this.userData = this.appService._tokenService.currentUserData;

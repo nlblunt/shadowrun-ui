@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from "../app.service";
+import ( Router } from "@angular/router";
 
 //MODELS
 import { Runner } from "../models/runner";
-import { Router } from "@angular/router";
+import { Metatype } from "../models/metatype";
 
 @Component({
   selector: "app-runner",
@@ -11,9 +12,10 @@ import { Router } from "@angular/router";
   styleUrls: ["./runner.component.css"]
 })
 export class RunnerComponent implements OnInit {
-  userData: any;
-  creatingNewRunner: boolean = false;
-  newRunner: any = {};
+  userData: any; //Current User
+  creatingNewRunner: boolean = false;  //Are we creating a new runner?
+  newRunner: any = {};  //Holds runner data
+  allMetatypes: any = {};  //Holds all the Metatypes
 
   constructor(private appService: AppService, private router: Router) {}
 

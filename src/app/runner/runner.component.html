@@ -15,7 +15,7 @@
 
 <div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">
   <p>Create a new runner here</p>
-  <form style="width: 400px">
+  <form style="width: 600px">
     <mat-form-field>
       <input
         matInput
@@ -50,7 +50,72 @@
             />
           </mat-form-field>
         </td>
+<td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="reaction"
+              [(ngModel)]="newRunner.reaction"
+              placeholder="Reaction"
+            />
+          </mat-form-field>
+        </td>
+<td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="strength"
+              [(ngModel)]="newRunner.strength"
+              placeholder="Strength"
+            />
+          </mat-form-field>
+        </td>
       </tr>
+		<tr>
+<td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="willpower"
+              [(ngModel)]="newRunner.willpower"
+              placeholder="Willpower"
+            />
+          </mat-form-field>
+        </td> <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="logic"
+              [(ngModel)]="newRunner.logic"
+              placeholder="Logic"
+            />
+          </mat-form-field>
+        </td> <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="intuition"
+              [(ngModel)]="newRunner.intuition"
+              placeholder="Intuition"
+            />
+          </mat-form-field>
+        </td> <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="charisma"
+              [(ngModel)]="newRunner.charisma"
+              placeholder="Charisma"
+            />
+          </mat-form-field>
+        </td>
+</tr>
     </table>
   </form>
 </div>

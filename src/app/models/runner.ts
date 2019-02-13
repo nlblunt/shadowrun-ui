@@ -3,13 +3,18 @@ export class Runner {
   name: string;
   metatype_id: number;
   metatype: string;
-  agility: number;
-  charisma: number;
-  reaction: number;
+
+  //PHYSICAL ATTRIUTES
   body: number;
-  intuition: number;
-  wisdom: number;
+  agility: number;
+  reaction: number;
   strength: number;
+
+  //MENTAL ATTRIBUTES
+  willpower: number;
+  logic: number;
+  intuition: number;
+  charisma: number;
 
   essense: number;
   magic: number;

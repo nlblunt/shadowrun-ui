@@ -1,16 +1,17 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Angular2TokenService } from "angular2-token";
 import { Router } from "@angular/router";
+import { AppService } from "./app.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  title = "app";
+export class AppComponent implements OnInit {
+  title = "Shadowrun";
   newRunner = false; //Creating a new runner (user)?
-  signed_in = false; //Is the user already signed in?
+  userSignedIn = false; //Is the user already signed in?
   login: any = {};
   error: string;
 
@@ -18,17 +19,23 @@ export class AppComponent {
 
   constructor(
     private _tokenService: Angular2TokenService,
+    private appService: AppService,
     private router: Router
-  ) {
-    this._tokenService.init({
-      apiBase: "http://shadowrun-api.herokuapp.com",
-      signInRedirect: "/"
-    });
+  ) {}
 
-    //If user is signed in, redirect to the runner page
-    if (this.signed_in) {
-      this.router.navigateByUrl("/runner");
-    }
+  ngOnInit() {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.appService.userSignedIn = false;
+
+    this.appService._tokenService.validateToken().subscribe(
+      res => {
+        console.log(this.appService._tokenService.currentUserData);
+        this.appService.userSignedIn = true;
+        this.router.navigateByUrl("/runner");
+      },
+      error => console.log("User not signed in")
+    );
   }
 
   ShowNewRunner(show: boolean) {
@@ -37,11 +44,11 @@ export class AppComponent {
 
   runnerSignIn() {
     //Sign in
-    this._tokenService
+    this.appService._tokenService
       .signIn({ email: this.login.email, password: this.login.password })
       .subscribe(
         res => {
-          this.signed_in = true;
+          this.appService.userSignedIn = true;
           this.router.navigateByUrl("/runner");
         },
         error => (this.error = error)
@@ -54,7 +61,7 @@ export class AppComponent {
       return;
     }
 
-    this._tokenService
+    this.appService._tokenService
       .registerAccount({
         email: this.login.email,
         password: this.login.password,
@@ -62,7 +69,7 @@ export class AppComponent {
       })
       .subscribe(
         res => {
-          this.signed_in = true;
+          this.appService.userSignedIn = true;
           this.router.navigateByUrl("/runner");
         },
         error => (this.error = "Error registering new account.")

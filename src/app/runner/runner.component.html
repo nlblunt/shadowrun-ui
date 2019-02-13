@@ -1,3 +1,121 @@
-<p>
-  runner works!
-</p>
+<div id="header" fxLayout="row" fxLayoutAlign="end start">
+  <button
+    mat-button-flat
+    color="warning"
+    *ngIf="appService.userSignedIn"
+    (click)="Logout()"
+  >
+    Logout
+  </button>
+</div>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h1>{{ userData.email }}</h1>
+  <button mat-flat-button (click)="SetNewRunner('true')">New Runner</button>
+</div>
+
+<div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">
+  <p>Create a new runner here</p>
+  <form style="width: 600px">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="name"
+        [(ngModel)]="newRunner.name"
+        placeholder="Runner Name"
+      />
+    </mat-form-field>
+
+    <table>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="body"
+              [(ngModel)]="newRunner.body"
+              placeholder="Body"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="agility"
+              [(ngModel)]="newRunner.agility"
+              placeholder="Agility"
+            />
+          </mat-form-field>
+        </td>
+<td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="reaction"
+              [(ngModel)]="newRunner.reaction"
+              placeholder="Reaction"
+            />
+          </mat-form-field>
+        </td>
+<td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="strength"
+              [(ngModel)]="newRunner.strength"
+              placeholder="Strength"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+		<tr>
+<td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="willpower"
+              [(ngModel)]="newRunner.willpower"
+              placeholder="Willpower"
+            />
+          </mat-form-field>
+        </td> <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="logic"
+              [(ngModel)]="newRunner.logic"
+              placeholder="Logic"
+            />
+          </mat-form-field>
+        </td> <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="intuition"
+              [(ngModel)]="newRunner.intuition"
+              placeholder="Intuition"
+            />
+          </mat-form-field>
+        </td> <td>
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="charisma"
+              [(ngModel)]="newRunner.charisma"
+              placeholder="Charisma"
+            />
+          </mat-form-field>
+        </td>
+</tr>
+    </table>
+  </form>
+</div>

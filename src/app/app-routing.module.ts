@@ -1,13 +1,13 @@
 //Import MODULES
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 //Import COMPONENTS
-import { AppComponent } from './app.component';
-import { RunnerComponent } from './runner/runner.component';
+import { AppComponent } from "./app.component";
+import { RunnerComponent } from "./runner/runner.component";
 
 //Import SERVICES
-import { Angular2TokenService } from 'angular2-token';
+import { Angular2TokenService } from "angular2-token";
 
 //import { PlayerLoginComponent } from './player/player-login/player-login.component';
 //import { PcCreateComponent } from './player/pc-create/pc-create.component';
@@ -24,11 +24,14 @@ import { Angular2TokenService } from 'angular2-token';
 //import { HeroesComponent } from './heroes.component';
 //import { HeroDetailComponent } from './hero-detail.component';
 
-
 const routes: Routes = [
   //{ path: '', redirectTo: '', pathMatch: 'full' },
   // path: 'home', component: HomeComponent },
-  { path: 'runner', component: RunnerComponent, canActivate: [Angular2TokenService] },
+  {
+    path: "runner",
+    component: RunnerComponent,
+    canActivate: [Angular2TokenService]
+  },
   //{ path: 'player-login', component: PlayerLoginComponent },
   //{ path: 'player/pc-create', component: PcCreateComponent },
   //{ path: 'player/pc-view', component: PcViewComponent },
@@ -38,11 +41,11 @@ const routes: Routes = [
   //{ path: 'dashboard',  component: DashboardComponent },
   //{ path: 'detail/:id', component: HeroDetailComponent },
   //{ path: 'heroes',     component: HeroesComponent }
-  { path: '', redirectTo: '/', pathMatch: 'full' }
+  { path: "", redirectTo: "/", pathMatch: "full" }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

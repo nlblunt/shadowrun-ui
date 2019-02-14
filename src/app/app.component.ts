@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Angular2TokenService } from "angular2-token";
+import { AngularTokenService } from "angular-token";
 import { Router } from "@angular/router";
 import { AppService } from "./app.service";
 
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   //Initialize Angular2TokenService
 
   constructor(
-    private _tokenService: Angular2TokenService,
+    //private _tokenService: Angular2TokenService,
     public appService: AppService,
     private router: Router
   ) {}
@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
 
     this.appService._tokenService.validateToken().subscribe(
       res => {
+        
         console.log(this.appService._tokenService.currentUserData);
         this.appService.userSignedIn = true;
         this.router.navigateByUrl("/runner");
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit {
   runnerSignIn() {
     //Sign in
     this.appService._tokenService
-      .signIn({ email: this.login.email, password: this.login.password })
+      .signIn({ login: this.login.email, password: this.login.password })
       .subscribe(
         res => {
           this.appService.userSignedIn = true;
@@ -63,7 +64,7 @@ export class AppComponent implements OnInit {
 
     this.appService._tokenService
       .registerAccount({
-        email: this.login.email,
+        login: this.login.email,
         password: this.login.password,
         passwordConfirmation: this.login.password
       })

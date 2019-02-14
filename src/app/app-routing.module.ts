@@ -7,7 +7,7 @@ import { AppComponent } from "./app.component";
 import { RunnerComponent } from "./runner/runner.component";
 
 //Import SERVICES
-import { Angular2TokenService } from "angular2-token";
+import { AngularTokenService } from "angular-token";
 
 //import { PlayerLoginComponent } from './player/player-login/player-login.component';
 //import { PcCreateComponent } from './player/pc-create/pc-create.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: "runner",
     component: RunnerComponent,
-    canActivate: [Angular2TokenService]
+    canActivate: [AngularTokenService]
   },
   //{ path: 'player-login', component: PlayerLoginComponent },
   //{ path: 'player/pc-create', component: PcCreateComponent },

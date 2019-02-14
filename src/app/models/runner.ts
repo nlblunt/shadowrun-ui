@@ -17,6 +17,7 @@ export class Runner {
   charisma: number;
 
   essense: number;
+  resonance: number;
   magic: number;
   edge: number;
 

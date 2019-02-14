@@ -15,7 +15,7 @@
 
 <div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">
   <p>Create a new runner here</p>
-  <form style="width: 600px">
+  <form>
     <mat-form-field>
       <input
         matInput
@@ -25,6 +25,19 @@
         placeholder="Runner Name"
       />
     </mat-form-field>
+	
+	<mat-form-field>
+		<mat-select placeholder="Metatype" [(ngModel)]="newRunner.metatype_id" name="metatype">
+			<mat-option *ngFor="let meta of allMetatypes" [value]="meta.id">{{meta.name}}</mat-option>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput type="text" name="concept" [(ngModel)]="newRunner.concept" placeholder="What type of Runner are ya?"/>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput type="number" name="karma" [(ngModel)]="newRunner.karma" placeholder="Karma"/>
+	</mat-form-field>
 
     <table>
       <tr>
@@ -115,6 +128,28 @@
             />
           </mat-form-field>
         </td>
+</tr>
+<tr>
+	<td>
+		<mat-form-field>
+<input matInput type="number" name="edge" [(ngModel)]="newRunner.edge" placeholder="Edge"/>
+</mat-form-field>
+</td>
+<td>
+		<mat-form-field>
+<input matInput type="number" name="magic" [(ngModel)]="newRunner.magic" placeholder="Magic"/>
+</mat-form-field>
+</td>
+<td>
+		<mat-form-field>
+<input matInput type="number" name="resonance" [(ngModel)]="newRunner.resonance" placeholder="Resonance"/>
+</mat-form-field>
+</td>
+<td>
+		<mat-form-field>
+<input matInput type="number" name="essence" [(ngModel)]="newRunner.essence" placeholder="Essence"/>
+</mat-form-field>
+</td>
 </tr>
     </table>
   </form>

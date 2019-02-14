@@ -12,10 +12,15 @@ import { Metatype } from "../models/metatype";
   styleUrls: ["./runner.component.css"]
 })
 export class RunnerComponent implements OnInit {
+  //TEST METATYPE
+  allMetatypes: Metatype[]= [
+  {id: 1, name: 'Human', body_start: 1, agility_start: 1},
+  {id: 2, name: 'Elf', body_start: 1, agility_start: 2}];
+
   userData: any; //Current User
   creatingNewRunner: boolean = false;  //Are we creating a new runner?
   newRunner: any = {};  //Holds runner data
-  allMetatypes: any = {};  //Holds all the Metatypes
+  //allMetatypes: Metatype[];  //Holds all the Metatypes
 
   constructor(public appService: AppService, private router: Router) {}
 
@@ -30,6 +35,7 @@ export class RunnerComponent implements OnInit {
     this.appService.userSignedIn = false;
     this.router.navigateByUrl("/");
   }
+
   //Sets if we are creating a new runner for the user
   SetNewRunner(state: boolean) {
     this.creatingNewRunner = state;
@@ -37,6 +43,9 @@ export class RunnerComponent implements OnInit {
     //If we are creating a new runner, initialize newRunner
     if (state == true) {
       this.newRunner = {};
+
+	//Get a list of all metatypes from the server
+	//TEST DATA
     }
   }
 }

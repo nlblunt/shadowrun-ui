@@ -16,7 +16,7 @@
 <div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">
   <p>Create a new runner here</p>
   <form>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input
         matInput
         type="text"
@@ -33,7 +33,7 @@
 	</mat-select>
 	</mat-form-field>
 
-	<mat-form-field>
+	<mat-form-field appearance="outline">
 		<input matInput type="text" name="concept" [(ngModel)]="newRunner.concept" placeholder="What type of Runner are ya?"/>
 	</mat-form-field>
 
@@ -43,7 +43,7 @@
 
     <table>
       <tr>
-        <td>
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -54,7 +54,7 @@
             />
           </mat-form-field>
         </td>
-        <td>
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -65,7 +65,7 @@
             />
           </mat-form-field>
         </td>
-<td>
+<td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -76,7 +76,7 @@
             />
           </mat-form-field>
         </td>
-<td>
+<td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -89,7 +89,7 @@
         </td>
       </tr>
 		<tr>
-<td>
+<td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -99,7 +99,7 @@
               placeholder="Willpower"
             />
           </mat-form-field>
-        </td> <td>
+        </td> <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -109,7 +109,7 @@
               placeholder="Logic"
             />
           </mat-form-field>
-        </td> <td>
+        </td> <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -119,7 +119,7 @@
               placeholder="Intuition"
             />
           </mat-form-field>
-        </td> <td>
+        </td> <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -132,22 +132,22 @@
         </td>
 </tr>
 <tr>
-	<td>
+	<td class="attribute">
 		<mat-form-field>
 <input matInput type="number" name="edge" [(ngModel)]="newRunner.edge" placeholder="Edge"/>
 </mat-form-field>
 </td>
-<td>
+<td class="attribute">
 		<mat-form-field>
 <input matInput type="number" name="magic" [(ngModel)]="newRunner.magic" placeholder="Magic"/>
 </mat-form-field>
 </td>
-<td>
+<td class="attribute">
 		<mat-form-field>
 <input matInput type="number" name="resonance" [(ngModel)]="newRunner.resonance" placeholder="Resonance"/>
 </mat-form-field>
 </td>
-<td>
+<td class="attribute">
 		<mat-form-field>
 <input matInput type="number" name="essence" [(ngModel)]="newRunner.essence" placeholder="Essence"/>
 </mat-form-field>

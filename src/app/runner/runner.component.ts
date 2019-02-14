@@ -12,10 +12,6 @@ import { Metatype } from "../models/metatype";
   styleUrls: ["./runner.component.css"]
 })
 export class RunnerComponent implements OnInit {
-  //TEST METATYPE
-  allMetatypes: Metatype[]= [
-  {id: 1, name: 'Human', body_start: 1, agility_start: 1},
-  {id: 2, name: 'Elf', body_start: 1, agility_start: 2}];
 
   userData: any; //Current User
   creatingNewRunner: boolean = false;  //Are we creating a new runner?

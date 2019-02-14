@@ -28,7 +28,8 @@
 	
 	<mat-form-field>
 		<mat-select placeholder="Metatype" [(ngModel)]="newRunner.metatype_id" name="metatype">
-			<mat-option *ngFor="let meta of allMetatypes" [value]="meta.id">{{meta.name}}</mat-option>
+			<mat-option value="1">Human</mat-option>
+<mat-option value="2">Elf</mat-option>
 	</mat-select>
 	</mat-form-field>
 

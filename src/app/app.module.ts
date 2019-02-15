@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { RunnerComponent } from "./runner/runner.component";
@@ -9,7 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 ///SERVICES
-import { Angular2TokenService } from "angular2-token";
+import { AngularTokenModule } from "angular-token";
 import { AppService } from "./app.service";
 
 //MATERIAL
@@ -20,11 +21,13 @@ import { MatSelectModule } from "@angular/material";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from "@angular/material/card";
 
+
 @NgModule({
   declarations: [AppComponent, RunnerComponent],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     RouterModule,
     FormsModule,
     AppRoutingModule,
@@ -34,9 +37,12 @@ import { MatCardModule } from "@angular/material/card";
     MatButtonModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    AngularTokenModule.forRoot({
+      apiBase: "http://shadowrun-api.herokuapp.com",
+      signInRedirect: "/"})
   ],
-  providers: [Angular2TokenService, AppService],
+  providers: [AngularTokenModule, AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

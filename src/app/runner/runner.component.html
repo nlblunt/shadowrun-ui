@@ -1,15 +1,12 @@
-<div id="header" fxLayout="row" fxLayoutAlign="end start">
-  <button
-    mat-button-flat
-    color="warning"
-    *ngIf="appService.userSignedIn"
-    (click)="Logout()"
-  >
+<mat-toolbar>
+  <span>{{userData.email}}</span>
+  <span style="flex: 1 1 auto"></span>
+  <button mat-flat-button color="accent" *ngIf="appService.userSignedIn" (click)="Logout()">
     Logout
   </button>
-</div>
+</mat-toolbar>
+
 <div fxLayout="column" fxLayoutAlign="center center">
-  <h1>{{ userData.email }}</h1>
   <button mat-flat-button (click)="SetNewRunner(true)">New Runner</button>
 </div>
 
@@ -17,29 +14,47 @@
   <p>Create a new runner here</p>
   <form>
     <mat-form-field appearance="outline">
+      <mat-label>Runner Name</mat-label>
       <input
         matInput
         type="text"
         name="name"
         [(ngModel)]="newRunner.name"
-        placeholder="Runner Name"
+        placeholder="What do we call ya?"
       />
     </mat-form-field>
-	
-	<mat-form-field>
-		<mat-select placeholder="Metatype" [(ngModel)]="newRunner.metatype_id" name="metatype">
-			<mat-option value="1">Human</mat-option>
-<mat-option value="2">Elf</mat-option>
-	</mat-select>
-	</mat-form-field>
 
-	<mat-form-field appearance="outline">
-		<input matInput type="text" name="concept" [(ngModel)]="newRunner.concept" placeholder="What type of Runner are ya?"/>
-	</mat-form-field>
+    <mat-form-field>
+      <mat-select
+        placeholder="Metatype"
+        [(ngModel)]="newRunner.metatype_id"
+        name="metatype"
+      >
+        <mat-option value="1">Human</mat-option>
+        <mat-option value="2">Elf</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-	<mat-form-field>
-		<input matInput type="number" name="karma" [(ngModel)]="newRunner.karma" placeholder="Karma"/>
-	</mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Runner Type</mat-label>
+      <input
+        matInput
+        type="text"
+        name="concept"
+        [(ngModel)]="newRunner.concept"
+        placeholder="What type of Runner are ya?"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        name="karma"
+        [(ngModel)]="newRunner.karma"
+        placeholder="Karma"
+      />
+    </mat-form-field>
 
     <table>
       <tr>
@@ -65,7 +80,7 @@
             />
           </mat-form-field>
         </td>
-<td class="attribute">
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -76,7 +91,7 @@
             />
           </mat-form-field>
         </td>
-<td class="attribute">
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -88,8 +103,8 @@
           </mat-form-field>
         </td>
       </tr>
-		<tr>
-<td class="attribute">
+      <tr>
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -99,7 +114,8 @@
               placeholder="Willpower"
             />
           </mat-form-field>
-        </td> <td class="attribute">
+        </td>
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -109,7 +125,8 @@
               placeholder="Logic"
             />
           </mat-form-field>
-        </td> <td class="attribute">
+        </td>
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -119,7 +136,8 @@
               placeholder="Intuition"
             />
           </mat-form-field>
-        </td> <td class="attribute">
+        </td>
+        <td class="attribute">
           <mat-form-field>
             <input
               matInput
@@ -130,29 +148,53 @@
             />
           </mat-form-field>
         </td>
-</tr>
-<tr>
-	<td class="attribute">
-		<mat-form-field>
-<input matInput type="number" name="edge" [(ngModel)]="newRunner.edge" placeholder="Edge"/>
-</mat-form-field>
-</td>
-<td class="attribute">
-		<mat-form-field>
-<input matInput type="number" name="magic" [(ngModel)]="newRunner.magic" placeholder="Magic"/>
-</mat-form-field>
-</td>
-<td class="attribute">
-		<mat-form-field>
-<input matInput type="number" name="resonance" [(ngModel)]="newRunner.resonance" placeholder="Resonance"/>
-</mat-form-field>
-</td>
-<td class="attribute">
-		<mat-form-field>
-<input matInput type="number" name="essence" [(ngModel)]="newRunner.essence" placeholder="Essence"/>
-</mat-form-field>
-</td>
-</tr>
+      </tr>
+      <tr>
+        <td class="attribute">
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="edge"
+              [(ngModel)]="newRunner.edge"
+              placeholder="Edge"
+            />
+          </mat-form-field>
+        </td>
+        <td class="attribute">
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="magic"
+              [(ngModel)]="newRunner.magic"
+              placeholder="Magic"
+            />
+          </mat-form-field>
+        </td>
+        <td class="attribute">
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="resonance"
+              [(ngModel)]="newRunner.resonance"
+              placeholder="Resonance"
+            />
+          </mat-form-field>
+        </td>
+        <td class="attribute">
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              name="essence"
+              [(ngModel)]="newRunner.essence"
+              placeholder="Essence"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
     </table>
   </form>
 </div>

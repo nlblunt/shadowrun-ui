@@ -3,8 +3,9 @@ import { AngularTokenService } from "angular-token";
 import { Router } from "@angular/router";
 import { promise } from "protractor";
 import { Promise } from "q";
+import { HttpClient } from "@angular/common/http";
 
-import { Metatype } from "/models/metatype";
+import { Metatype } from "./models/metatype";
 
 //import { Observable } from "rxjs/Observable";
 

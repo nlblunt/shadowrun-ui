@@ -28,7 +28,7 @@ export class AppService {
 	{
 		this.http.get('metatype/index').subscribe(
 			res => {
-				this.allMetatypes = res;
+				this.allMetatypes = res.json() as Metatype[];
 				console.log(this.allMetatypes);
 				console.log(res);
 			},

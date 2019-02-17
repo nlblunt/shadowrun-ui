@@ -22,7 +22,9 @@ export class RunnerComponent implements OnInit {
 
   ngOnInit() {
     this.userData = this.appService._tokenService.currentUserData;
-    console.log(this.userData);
+
+	//Get the metatypes from the server for future use
+	this.appService.GetAllMetatypes();
   }
 
   //Logout and return to main page

@@ -20,7 +20,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from "@angular/material/card";
-
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [AppComponent, RunnerComponent],
@@ -38,6 +38,7 @@ import { MatCardModule } from "@angular/material/card";
     MatSelectModule,
     MatFormFieldModule,
     MatCardModule,
+    MatToolbarModule,
     AngularTokenModule.forRoot({
       apiBase: "http://shadowrun-api.herokuapp.com",
       signInRedirect: "/"})

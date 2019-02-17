@@ -26,11 +26,12 @@ export class AppService {
 	GetAllMetatypes()
 	{
 		this.http.get('metatype/index').subscribe(
-	res => {
-	allMetatypes = res;
-	console.log(allMetatypes);
-	console.log(res);
-},
-error => console.log(error)	
+			res => {
+				this.allMetatypes = res;
+				console.log(this.allMetatypes);
+				console.log(res);
+			},
+				error => console.log(error)	
+			)
 	}	
 }

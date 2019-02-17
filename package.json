@@ -33,7 +33,8 @@
     "npm": "^5.7.1",
     "rxjs": "^6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "^0.8.29"
+    "zone.js": "^0.8.29",
+	"express.js": "4.16.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
@@ -57,6 +58,6 @@
   },
   "engines": {
     "node": "8.12.0",
-    "npm": "6.4.1"
+    "npm": "6.8.0"
   }
 }

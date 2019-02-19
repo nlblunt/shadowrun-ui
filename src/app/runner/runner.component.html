@@ -1,7 +1,12 @@
 <mat-toolbar>
-  <span>{{userData.email}}</span>
+  <span>{{ userData.email }}</span>
   <span style="flex: 1 1 auto"></span>
-  <button mat-flat-button color="accent" *ngIf="appService.userSignedIn" (click)="Logout()">
+  <button
+    mat-flat-button
+    color="accent"
+    *ngIf="appService.userSignedIn"
+    (click)="Logout()"
+  >
     Logout
   </button>
 </mat-toolbar>
@@ -27,11 +32,15 @@
     <mat-form-field>
       <mat-select
         placeholder="Metatype"
-        [(ngModel)]="newRunner.metatype_id"
+        [(ngModel)]="newRunner.metatype"
         name="metatype"
+        (ngModelChange)="SelectMetatype($event)"
       >
-        <mat-option value="1">Human</mat-option>
-        <mat-option value="2">Elf</mat-option>
+        <mat-option
+          *ngFor="let meta of appService.allMetatypes; index as i"
+          [value]="meta.id"
+          >{{ meta.name }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
@@ -56,7 +65,14 @@
       />
     </mat-form-field>
 
-    <table>
+    <br />
+    <mat-divider> </mat-divider>
+    <br />
+
+    <table mat-table style="width: 100%">
+      <caption>
+        Physical Attributes
+      </caption>
       <tr>
         <td class="attribute">
           <mat-form-field>
@@ -66,6 +82,8 @@
               name="body"
               [(ngModel)]="newRunner.body"
               placeholder="Body"
+              [min]="metaSelected.body_start"
+              [max]="metaSelected.body_max"
             />
           </mat-form-field>
         </td>
@@ -77,6 +95,8 @@
               name="agility"
               [(ngModel)]="newRunner.agility"
               placeholder="Agility"
+              [min]="metaSelected.agility_start"
+              [max]="metaSelected.agility_max"
             />
           </mat-form-field>
         </td>
@@ -88,6 +108,8 @@
               name="reaction"
               [(ngModel)]="newRunner.reaction"
               placeholder="Reaction"
+              [min]="metaSelected.reaction_start"
+              [max]="metaSelected.reaction_max"
             />
           </mat-form-field>
         </td>
@@ -99,10 +121,22 @@
               name="strength"
               [(ngModel)]="newRunner.strength"
               placeholder="Strength"
+              [min]="metaSelected.strength_start"
+              [max]="metaSelected.strength_max"
             />
           </mat-form-field>
         </td>
       </tr>
+    </table>
+
+    <br />
+    <mat-divider></mat-divider>
+    <br />
+
+    <table mat-table>
+      <caption>
+        Mental Attributes
+      </caption>
       <tr>
         <td class="attribute">
           <mat-form-field>
@@ -112,6 +146,8 @@
               name="willpower"
               [(ngModel)]="newRunner.willpower"
               placeholder="Willpower"
+              [min]="metaSelected.willpower_start"
+              [max]="metaSelected.willpower_max"
             />
           </mat-form-field>
         </td>
@@ -123,6 +159,8 @@
               name="logic"
               [(ngModel)]="newRunner.logic"
               placeholder="Logic"
+              [min]="metaSelected.logic_start"
+              [max]="metaSelected.logic_max"
             />
           </mat-form-field>
         </td>
@@ -134,6 +172,8 @@
               name="intuition"
               [(ngModel)]="newRunner.intuition"
               placeholder="Intuition"
+              [min]="metaSelected.intuition_start"
+              [max]="metaSelected.intuition_max"
             />
           </mat-form-field>
         </td>
@@ -145,10 +185,17 @@
               name="charisma"
               [(ngModel)]="newRunner.charisma"
               placeholder="Charisma"
+              [min]="metaSelected.charisma_start"
+              [max]="metaSelected.charisma_max"
             />
           </mat-form-field>
         </td>
       </tr>
+    </table>
+
+    <mat-divider color="primary"></mat-divider>
+
+    <table>
       <tr>
         <td class="attribute">
           <mat-form-field>
@@ -158,6 +205,8 @@
               name="edge"
               [(ngModel)]="newRunner.edge"
               placeholder="Edge"
+              [min]="metaSelected.edge_start"
+              [max]="metaSelected.edge_max"
             />
           </mat-form-field>
         </td>

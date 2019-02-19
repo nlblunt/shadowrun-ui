@@ -12,19 +12,20 @@ import { Metatype } from "../models/metatype";
   styleUrls: ["./runner.component.css"]
 })
 export class RunnerComponent implements OnInit {
-
   userData: any; //Current User
-  creatingNewRunner: boolean = false;  //Are we creating a new runner?
-  newRunner: any = {};  //Holds runner data
+  creatingNewRunner: boolean = false; //Are we creating a new runner?
+  newRunner: any = {}; //Holds runner data
   //allMetatypes: Metatype[];  //Holds all the Metatypes
+
+  metaSelected: any = {};
 
   constructor(public appService: AppService, private router: Router) {}
 
   ngOnInit() {
     this.userData = this.appService._tokenService.currentUserData;
 
-	//Get the metatypes from the server for future use
-	this.appService.GetAllMetatypes();
+    //Get the metatypes from the server for future use
+    this.appService.GetAllMetatypes();
   }
 
   //Logout and return to main page
@@ -37,13 +38,15 @@ export class RunnerComponent implements OnInit {
   //Sets if we are creating a new runner for the user
   SetNewRunner(state: boolean) {
     this.creatingNewRunner = state;
+    this.metaSelected = this.appService.allMetatypes[0];
 
     //If we are creating a new runner, initialize newRunner
     if (state == true) {
       this.newRunner = {};
-
-	//Get a list of all metatypes from the server
-	//TEST DATA
     }
+  }
+
+  SelectMetatype(index: number) {
+    this.metaSelected = this.appService.allMetatypes[index - 1];
   }
 }

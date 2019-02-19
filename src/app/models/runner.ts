@@ -2,7 +2,7 @@ export class Runner {
   id: number;
   name: string;
   metatype_id: number;
-  metatype: string;
+  metatype: any;
 
   //PHYSICAL ATTRIUTES
   body: number;

@@ -48,5 +48,16 @@ export class RunnerComponent implements OnInit {
 
   SelectMetatype(index: number) {
     this.metaSelected = this.appService.allMetatypes[index - 1];
+	this.newRunner.body = this.metaSelected.body_start;
+	this.newRunner.agility = this.metaSelected.agility_start;
+	this.newRunner.reaction = this.metaSelected.reaction_start;
+	this.newRunner.strength = this.metaSelected.strength_start;
+
+	this.newRunner.willpower = this.metaSelected.willpower_start;
+	this.newRunner.intuition = this.metaSelected.intuition_start;
+	this.newRunner.logic = this.metaSelected.logic_start; 
+	this.newRunner.charisma = this.metaSelected.charisma_start;
+	
+	this.newRunner.edge = this.metaSelected.edge_start;
   }
 }

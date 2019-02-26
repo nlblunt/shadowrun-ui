@@ -5,5 +5,7 @@ mat-form-field
 
 .attribute
 {
-	width: 50px;
+	width: 20%;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }

@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { RunnerComponent } from "./runner/runner.component";
@@ -21,6 +21,7 @@ import { MatSelectModule } from "@angular/material";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatDividerModule } from "@angular/material/divider";
 
 @NgModule({
   declarations: [AppComponent, RunnerComponent],
@@ -39,9 +40,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatFormFieldModule,
     MatCardModule,
     MatToolbarModule,
+    MatDividerModule,
     AngularTokenModule.forRoot({
       apiBase: "http://shadowrun-api.herokuapp.com",
-      signInRedirect: "/"})
+      signInRedirect: "/"
+    })
   ],
   providers: [AngularTokenModule, AppService],
   bootstrap: [AppComponent]

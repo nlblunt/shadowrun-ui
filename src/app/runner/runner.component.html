@@ -1,7 +1,12 @@
 <mat-toolbar>
-  <span>{{userData.email}}</span>
+  <span>{{ userData.email }}</span>
   <span style="flex: 1 1 auto"></span>
-  <button mat-flat-button color="accent" *ngIf="appService.userSignedIn" (click)="Logout()">
+  <button
+    mat-flat-button
+    color="accent"
+    *ngIf="appService.userSignedIn"
+    (click)="Logout()"
+  >
     Logout
   </button>
 </mat-toolbar>
@@ -12,7 +17,7 @@
 
 <div *ngIf="creatingNewRunner" fxLayout="column" fxLayoutAlign="center center">
   <p>Create a new runner here</p>
-  <form>
+  <form style="width: 500px">
     <mat-form-field appearance="outline">
       <mat-label>Runner Name</mat-label>
       <input
@@ -27,11 +32,15 @@
     <mat-form-field>
       <mat-select
         placeholder="Metatype"
-        [(ngModel)]="newRunner.metatype_id"
+        [(ngModel)]="newRunner.metatype"
         name="metatype"
+        (ngModelChange)="SelectMetatype($event)"
       >
-        <mat-option value="1">Human</mat-option>
-        <mat-option value="2">Elf</mat-option>
+        <mat-option
+          *ngFor="let meta of appService.allMetatypes; index as i"
+          [value]="meta.id"
+          >{{ meta.name }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
@@ -56,145 +65,154 @@
       />
     </mat-form-field>
 
-    <table>
-      <tr>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="body"
-              [(ngModel)]="newRunner.body"
-              placeholder="Body"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="agility"
-              [(ngModel)]="newRunner.agility"
-              placeholder="Agility"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="reaction"
-              [(ngModel)]="newRunner.reaction"
-              placeholder="Reaction"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="strength"
-              [(ngModel)]="newRunner.strength"
-              placeholder="Strength"
-            />
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="willpower"
-              [(ngModel)]="newRunner.willpower"
-              placeholder="Willpower"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="logic"
-              [(ngModel)]="newRunner.logic"
-              placeholder="Logic"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="intuition"
-              [(ngModel)]="newRunner.intuition"
-              placeholder="Intuition"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="charisma"
-              [(ngModel)]="newRunner.charisma"
-              placeholder="Charisma"
-            />
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td class="attribute">
-          <mat-form-field>
+    <br />
+    <mat-divider> </mat-divider>
+    <br />
+
+    <h3>Physical Attributes</h3>
+    <div fxLayout="row">
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="body"
+          [(ngModel)]="newRunner.body"
+          placeholder="Body"
+          [min]="metaSelected.body_start"
+          [max]="metaSelected.body_max"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="agility"
+          [(ngModel)]="newRunner.agility"
+          placeholder="Agility"
+          [min]="metaSelected.agility_start"
+          [max]="metaSelected.agility_max"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="reaction"
+          [(ngModel)]="newRunner.reaction"
+          placeholder="Reaction"
+          [min]="metaSelected.reaction_start"
+          [max]="metaSelected.reaction_max"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="strength"
+          [(ngModel)]="newRunner.strength"
+          placeholder="Strength"
+          [min]="metaSelected.strength_start"
+          [max]="metaSelected.strength_max"
+        />
+      </mat-form-field>
+    </div>
+
+    <h3>Mental Attributes</h3>
+    <div fxLayout="row">
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="willpower"
+          [(ngModel)]="newRunner.willpower"
+          placeholder="Willpower"
+          [min]="metaSelected.willpower_start"
+          [max]="metaSelected.willpower_max"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="logic"
+          [(ngModel)]="newRunner.logic"
+          placeholder="Logic"
+          [min]="metaSelected.logic_start"
+          [max]="metaSelected.logic_max"
+        />
+      </mat-form-field>
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="intuition"
+          [(ngModel)]="newRunner.intuition"
+          placeholder="Intuition"
+          [min]="metaSelected.intuition_start"
+          [max]="metaSelected.intuition_max"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="charisma"
+          [(ngModel)]="newRunner.charisma"
+          placeholder="Charisma"
+          [min]="metaSelected.charisma_start"
+          [max]="metaSelected.charisma_max"
+        />
+      </mat-form-field>
+    </div>
+
+    <h3>Special Attributes</h3>
+    <div fxLayout="row">
+        <mat-form-field class="attribute">
             <input
               matInput
               type="number"
               name="edge"
               [(ngModel)]="newRunner.edge"
               placeholder="Edge"
+              [min]="metaSelected.edge_start"
+              [max]="metaSelected.edge_max"
             />
           </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="magic"
-              [(ngModel)]="newRunner.magic"
-              placeholder="Magic"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="resonance"
-              [(ngModel)]="newRunner.resonance"
-              placeholder="Resonance"
-            />
-          </mat-form-field>
-        </td>
-        <td class="attribute">
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              name="essence"
-              [(ngModel)]="newRunner.essence"
-              placeholder="Essence"
-            />
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+
+          <mat-form-field class="attribute">
+              <input
+                matInput
+                type="number"
+                name="magic"
+                [(ngModel)]="newRunner.magic"
+                placeholder="Magic"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="attribute">
+                <input
+                  matInput
+                  type="number"
+                  name="resonance"
+                  [(ngModel)]="newRunner.resonance"
+                  placeholder="Resonance"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="attribute">
+                  <input
+                    matInput
+                    type="number"
+                    name="essence"
+                    [(ngModel)]="newRunner.essence"
+                    placeholder="Essence"
+                  />
+                </mat-form-field>
+    </div>
   </form>
 </div>

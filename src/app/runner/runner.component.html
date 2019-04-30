@@ -172,47 +172,64 @@
 
     <h3>Special Attributes</h3>
     <div fxLayout="row">
-        <mat-form-field class="attribute">
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="edge"
+          [(ngModel)]="newRunner.edge"
+          placeholder="Edge"
+          [min]="metaSelected.edge_start"
+          [max]="metaSelected.edge_max"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="magic"
+          [(ngModel)]="newRunner.magic"
+          placeholder="Magic"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="resonance"
+          [(ngModel)]="newRunner.resonance"
+          placeholder="Resonance"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="attribute">
+        <input
+          matInput
+          type="number"
+          name="essence"
+          [(ngModel)]="newRunner.essence"
+          placeholder="Essence"
+        />
+      </mat-form-field>
+    </div>
+
+    <h3>Skills</h3>
+    <div fxLayout="row">
+      <table>
+        <tr *ngFor="let skill of appService.allSkills; index as i">
+          <td>{{ skill.name }}</td>
+          <td>
             <input
               matInput
               type="number"
-              name="edge"
-              [(ngModel)]="newRunner.edge"
-              placeholder="Edge"
-              [min]="metaSelected.edge_start"
-              [max]="metaSelected.edge_max"
+              name="skill"
+              [(ngModel)]="skill.rank"
             />
-          </mat-form-field>
-
-          <mat-form-field class="attribute">
-              <input
-                matInput
-                type="number"
-                name="magic"
-                [(ngModel)]="newRunner.magic"
-                placeholder="Magic"
-              />
-            </mat-form-field>
-
-            <mat-form-field class="attribute">
-                <input
-                  matInput
-                  type="number"
-                  name="resonance"
-                  [(ngModel)]="newRunner.resonance"
-                  placeholder="Resonance"
-                />
-              </mat-form-field>
-
-              <mat-form-field class="attribute">
-                  <input
-                    matInput
-                    type="number"
-                    name="essence"
-                    [(ngModel)]="newRunner.essence"
-                    placeholder="Essence"
-                  />
-                </mat-form-field>
+          </td>
+        </tr>
+      </table>
     </div>
   </form>
 </div>

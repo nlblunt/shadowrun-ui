@@ -26,6 +26,7 @@ export class RunnerComponent implements OnInit {
 
     //Get the metatypes from the server for future use
     this.appService.GetAllMetatypes();
+    this.appService.GetAllSkills();
   }
 
   //Logout and return to main page

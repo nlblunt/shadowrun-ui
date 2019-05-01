@@ -221,12 +221,14 @@
         <tr *ngFor="let skill of appService.allSkills; index as i">
           <td>{{ skill.name }}</td>
           <td>
+            <mat-form-field>
             <input
               matInput
               type="number"
               name="skill"
               [(ngModel)]="skill.rank"
             />
+            </mat-form-field>
           </td>
         </tr>
       </table>

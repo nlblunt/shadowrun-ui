@@ -13,7 +13,8 @@ import { Skill } from "./models/skill";
 
 @Injectable()
 export class AppService {
-  apiUrl: string = "http://shadowrun-api.herokuapp.com/";
+  //apiUrl: string = "http://shadowrun-api.herokuapp.com/";
+  apiUrl: string = "https://shadowrun-api.herokuapp.com/";
   userSignedIn: boolean = false;
 
   //DATA STORAGE
@@ -28,7 +29,7 @@ export class AppService {
 
   GetAllMetatypes() {
     this.allMetatypes = [];
-
+    
     this.http.get(this.apiUrl + "metatype/index").subscribe(
       res => {
         let result = <any>res;
